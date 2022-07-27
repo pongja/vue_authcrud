@@ -6,12 +6,12 @@
     </div>
     <table border="1" class="width_table">
       <tr>
-        <th>title</th>
-        <th>company</th>
-        <th>company_url</th>
-        <th>location</th>
-        <th>description</th>
-        <th>date_posted</th>
+        <th>제목</th>
+        <th>회사</th>
+        <th>회사주소</th>
+        <th>지역</th>
+        <th>내용</th>
+        <th>날짜</th>
       </tr>
       <tr>
         <td>1</td>
