@@ -22,6 +22,10 @@
                 <textarea name="description"  id="description" v-model="state.form.description" ></textarea>
             </td>
         </tr>
+          <tr>
+            <td>오늘날짜</td>
+            <td><input type="text" class="input_color" name="location"  id="date_posted" v-model="state.form.date_posted"></td>
+        </tr>
     </table>
     <button @click="formCreate()"><p class="color_black">글쓰기</p></button>
 </template>
@@ -38,7 +42,7 @@ const state = reactive({
   company_url: "",
   location: "",
   description: "",
-  date_posted:Date.now()
+  date_posted: Date.now()
   },
 });
 const formCreate = async () => {
@@ -52,15 +56,15 @@ const formCreate = async () => {
         date_posted: state.form.date_posted,
       };
   try {
-    await axios.post("http://127.0.0.1:8000/jobs/create-job/", postdata, {
+    
+    await axios.post("http://127.0.0.1:8000/jobs/create-job", postdata, {
       headers: {'Content-Type': 'application/json' }, withCredentials:true
     })
-    .then((res)=>{
-      console.log(res.data)
-       localStorage.setItem("access_token", `Bearer ${res.data.access_token}`);
+    .then((res) => {
+          console.log(res.data)
+          localStorage.getItem("access_token", `Bearer ${res.data.access_token}`);
           document.cookie = `access_token=Bearer ${res.data.access_token}`;
-      alert('성공')
-    })
+    });
   } catch (error) {
     console.log(error);
     alert('실패')
