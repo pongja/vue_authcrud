@@ -58,10 +58,13 @@ const formCreate = async () => {
   try {
     
     await axios.post("http://127.0.0.1:8000/jobs/create-job", postdata, {
-      headers: {'Content-Type': 'application/json' }, withCredentials:true
+      headers: {'Content-Type': 'application/json' }, 
+      withCredentials:true,
+     
     })
     .then((res) => {
           console.log(res.data)
+          localStorage.getitem('loginId', state.login.loginId)
           localStorage.getItem("access_token", `Bearer ${res.data.access_token}`);
           document.cookie = `access_token=Bearer ${res.data.access_token}`;
     });

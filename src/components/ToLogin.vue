@@ -39,11 +39,12 @@ export default {
         })
       .then((res) => {
           console.log(res.data)
+          localStorage.setItem('loginId', state.login.loginId)
           localStorage.setItem("access_token", `Bearer ${res.data.access_token}`);
           document.cookie = `access_token=Bearer ${res.data.access_token}`;
     });
     router.push({
-      name: 'Home',   
+      name: 'Home',     
     })
     } catch (error){
       alert('login failed!!')
