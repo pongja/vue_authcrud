@@ -34,11 +34,11 @@ import axios from 'axios';
 
 
 const form = ref({
-  title: null,
-  company: null,
-  company_url: null,
-  location: null,
-  description: null,
+  title: String,
+  company: String,
+  company_url: String,
+  location: String,
+  description: String,
   date_posted:Date.now()
 });
 const formCreate = async () => {
