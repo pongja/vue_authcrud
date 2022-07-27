@@ -25,7 +25,7 @@ const routes = [
   },
   {
     path: '/BoardCreate',
-    name: BoardCreate,
+    name: 'BoardCreate',
     component: ToBoardCreate,
   },
 ]
