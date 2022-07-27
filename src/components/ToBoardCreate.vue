@@ -43,7 +43,7 @@ const state = reactive({
 });
 const formCreate = async () => {
     
-     const args = {
+     const postdata = {
         title: state.form.title,
         company: state.form.company,
         company_url: state.form.company_url,
@@ -52,7 +52,7 @@ const formCreate = async () => {
         date_posted: state.form.date_posted,
       };
   try {
-    await axios.post("http://127.0.0.1:8000/jobs/create-job/", args, {
+    await axios.post("http://127.0.0.1:8000/jobs/create-job/", postdata, {
       headers: {'Content-Type': 'application/json' }, withCredentials:true
     })
     .then((res)=>{
