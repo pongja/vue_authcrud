@@ -24,7 +24,7 @@
             </td>
         </tr>
     </table>
-    <button value="글쓰기"><p class="color_black">글쓰기</p></button>
+    <button><p class="color_black">글쓰기</p></button>
     </form>
 </template>
 
@@ -42,17 +42,18 @@ const form = ref({
   date_posted:Date.now()
 });
 const formCreate = async () => {
+  console.log(form)
   try {
     await axios.post("http://127.0.0.1:8000/jobs/create-job", ...form.value, {
       headers: {"Content-Type":"multipart/form-data" }, withCredentials:true
     })
-    .then((res) => {
-          console.log(res.data)
-          localStorage.setItem("access_token", `Bearer ${res.data.access_token}`);
-          document.cookie = `access_token=Bearer ${res.data.access_token}`;
-    });
+    .then((res)=>{
+      console.log(res.data)
+      alert('성공')
+    })
   } catch (error) {
     console.log(error);
+    alert('실패')
   }
 };
 </script>
