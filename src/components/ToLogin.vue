@@ -35,7 +35,7 @@ export default {
       console.log(state.login)
       try {
       await axios.post("http://127.0.0.1:8000/login/token", args, {
-        header: { 'Content-Type': 'application/json'},
+        header: { 'Content-Type': 'application/json'}, withCredentials:true 
         })
       .then((res) => {
           console.log(res.data)
