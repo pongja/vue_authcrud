@@ -1,59 +1,70 @@
 <template>
-    <form method="post" @submit.prevent="formCreate">
     <table>
         <tr>
             <td>제목</td>
-            <td><input type="text" class="input_color" name="title" v-model="form.title"></td>
+            <td><input type="text" class="input_color" id="title" name="title" v-model="state.form.title"></td>
         </tr>
         <tr>
             <td>회사</td>
-            <td><input type="text" class="input_color" name="company"  v-model="form.company"></td>
+            <td><input type="text" class="input_color" name="company" id="company" v-model="state.form.company"></td>
         </tr>
         <tr>
             <td>회사주소</td>
-            <td><input type="text" class="input_color" name="company_url"  v-model="form.company_url"></td>
+            <td><input type="text" class="input_color" name="company_url" id="company_url" v-model="state.form.company_url"></td>
         </tr>
         <tr>
             <td>지역</td>
-            <td><input type="text" class="input_color" name="location"  v-model="form.location"></td>
+            <td><input type="text" class="input_color" name="location"  id="location" v-model="state.form.location"></td>
         </tr>
         <tr>
             <td>내용</td>
             <td>
-                <textarea name="description"  v-model="form.description" ></textarea>
+                <textarea name="description"  id="description" v-model="state.form.description" ></textarea>
             </td>
         </tr>
     </table>
-    <button><p class="color_black">글쓰기</p></button>
-    </form>
+    <button @click="formCreate()"><p class="color_black">글쓰기</p></button>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import axios from 'axios';
+import { reactive } from "vue"
+import axios from "axios"
 
 
-const form = ref({
+const state = reactive({
+  form: {
   title: "",
   company: "",
   company_url: "",
   location: "",
   description: "",
   date_posted:Date.now()
+  },
 });
 const formCreate = async () => {
-  console.log(form)
+    
+     const args = {
+        title: state.form.title,
+        company: state.form.company,
+        company_url: state.form.company_url,
+        location: state.form.location,
+        description: state.form.description,
+        date_posted: state.form.date_posted,
+      };
   try {
-    await axios.post("http://127.0.0.1:8000/jobs/create-job", ...form.value, {
-      headers: {"Content-Type":"multipart/form-data" }, withCredentials:true
+    await axios.post("http://127.0.0.1:8000/jobs/create-job/", args, {
+      headers: {'Content-Type': 'application/json' }, withCredentials:true
     })
     .then((res)=>{
       console.log(res.data)
+       localStorage.setItem("access_token", `Bearer ${res.data.access_token}`);
+          document.cookie = `access_token=Bearer ${res.data.access_token}`;
       alert('성공')
     })
   } catch (error) {
     console.log(error);
     alert('실패')
+     
   }
 };
 </script>
