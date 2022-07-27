@@ -4,11 +4,11 @@
   <form @submit.prevent="submit()">
     <label for="loginId">
       <span>아이디</span>
-      <input type="text" class="input_color" id="loginId" v-model="state.form.loginId" />
+      <input type="text" class="input_color" id="loginId" v-model="state.login.loginId" />
     </label>
     <label for="loginPw">
       <span>비밀번호</span>
-      <input type="password" class="input_color" id="loginPw" v-model="state.form.loginPw" />
+      <input type="password" class="input_color" id="loginPw" v-model="state.login.loginPw" />
     </label>
     <hr />
     <button  class="login_btn">로그인</button>
@@ -23,16 +23,16 @@ export default {
   setup() {
     const router = useRouter();
     const state = reactive({
-      form: {
+      login: {
         loginId: "",
         loginPw: "",
       },
     });
     const submit =  async () => {
       const args = new FormData()
-      args.append('username', state.form.loginId)
-      args.append('password', state.form.loginPw)
-      console.log(state.form)
+      args.append('username', state.login.loginId)
+      args.append('password', state.login.loginPw)
+      console.log(state.login)
       try {
       await axios.post("http://127.0.0.1:8000/login/token", args, {
         header: { 'Content-Type': 'application/json'},

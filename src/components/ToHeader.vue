@@ -11,11 +11,11 @@
           <li class="padding-left">
             <router-link to="/">메인</router-link>
           </li>
-          <li>게시판</li>
+          <li><router-link to="/Board">게시판</router-link></li>
         </ul>
         <ul class="display_ul2" v-if="cookie">
           <li class="padding-left2">
-            <router-link to="/Login">{{loginId}}</router-link>
+            <router-link to="/Login">{{login.loginId}}</router-link>
           </li>
           <li>
             <router-link to="/Signup">로그아웃</router-link>
@@ -38,7 +38,7 @@
 export default {
   setup(){
     return {
-      username: {
+      login: {
         loginId: decodeURIComponent(document.cookie)
       },
       computed: {
