@@ -3,7 +3,7 @@ import ToHome from '@/components/ToHome.vue';
 import ToLogin from '@/components/ToLogin.vue';
 import ToSignup from '@/components/ToSignup.vue';
 import ToBoard from '@/components/ToBoard.vue';
-
+import ToBoardCreate from '@/components/ToBoardCreate.vue';
 const routes = [
   {
     path: '/',
@@ -22,6 +22,11 @@ const routes = [
   {
     path: '/Board',
     component: ToBoard,
+  },
+  {
+    path: '/BoardCreate',
+    name: BoardCreate,
+    component: ToBoardCreate,
   },
 ]
 
