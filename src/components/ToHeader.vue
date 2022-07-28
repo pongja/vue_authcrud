@@ -37,13 +37,13 @@
 <script>
 export default {
   setup() {
-    const state = reactive({
-      login: {
-          loginID : "",
-      },
-    });
-    let usertoken = localStorage.getItem("loginID");
-     return { state }
+  //   const state = reactive({
+  //     login: {
+  //         loginID : "",
+  //     },
+  //   });
+  //   let usertoken = localStorage.getItem("loginID");
+  //    return { state }
   },
  
 };

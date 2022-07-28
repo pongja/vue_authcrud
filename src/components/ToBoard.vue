@@ -14,19 +14,34 @@
         <th>날짜</th>
       </tr>
       <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
+        <td>{{form.title}}</td>
+        <td>{{form.company}}</td>
+        <td>{{form.company_url}}</td>
+        <td>{{form.location}}</td>
+        <td>{{form.description}}</td>
+        <td>{{from.date_posted}}</td>
       </tr>
     </table>
   </div>
 </template>
 
 <script setup>
+import axios from 'axios';
 import { useRouter } from 'vue-router';
+import { reactive } from "vue"
+const state = reactive({
+  form: {
+  title: "",
+  company: "",
+  company_url: "",
+  location: "",
+  description: "",
+  date_posted: ""
+  },
+});
+axios.get("http://127.0.0.1:8000/jobs/all", state)
+
+
 const router = useRouter();
 const writepage = () => {
   router.push({
