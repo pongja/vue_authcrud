@@ -14,12 +14,12 @@
         <th>날짜</th>
       </tr>
       <tr>
-        <td>{{form.title}}</td>
-        <td>{{form.company}}</td>
-        <td>{{form.company_url}}</td>
-        <td>{{form.location}}</td>
-        <td>{{form.description}}</td>
-        <td>{{from.date_posted}}</td>
+        <td>{{state.form.title}}</td>
+        <td>{{state.form.company}}</td>
+        <td>{{state.form.company_url}}</td>
+        <td>{{state.form.location}}</td>
+        <td>{{state.form.description}}</td>
+        <td>{{state.from.date_posted}}</td>
       </tr>
     </table>
   </div>
@@ -31,12 +31,12 @@ import { useRouter } from 'vue-router';
 import { reactive } from "vue"
 const state = reactive({
   form: {
-  title: "",
-  company: "",
-  company_url: "",
-  location: "",
-  description: "",
-  date_posted: ""
+  title: String,
+  company: String,
+  company_url: String,
+  location: String,
+  description: String,
+  date_posted: String
   },
 });
 axios.get("http://127.0.0.1:8000/jobs/all", state)
