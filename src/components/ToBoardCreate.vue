@@ -42,11 +42,11 @@ const state = reactive({
   company_url: "",
   location: "",
   description: "",
-  date_posted: Date.now()
+  date_posted: ""
   },
 });
 const formCreate = async () => {
-    
+    let token = localStorage.getItem("access_token")
      const postdata = {
         title: state.form.title,
         company: state.form.company,
@@ -55,19 +55,17 @@ const formCreate = async () => {
         description: state.form.description,
         date_posted: state.form.date_posted,
       };
+      console.log(postdata)
+      
   try {
-    
     await axios.post("http://127.0.0.1:8000/jobs/create-job", postdata, {
-      headers: {'Content-Type': 'application/json' }, 
+      headers: {
+        'Content-Type': 'application/json' ,
+         'Authorization' : token
+        }, 
       withCredentials:true,
-     
     })
-    .then((res) => {
-          console.log(res.data)
-          localStorage.getitem('loginId', state.login.loginId)
-          localStorage.getItem("access_token", `Bearer ${res.data.access_token}`);
-          document.cookie = `access_token=Bearer ${res.data.access_token}`;
-    });
+    alert('성공 ')
   } catch (error) {
     console.log(error);
     alert('실패')

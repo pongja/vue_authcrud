@@ -37,16 +37,7 @@
 <script>
 export default {
   setup(){
-    return {
-      login: {
-        loginId: decodeURIComponent(document.cookie)
-      },
-      computed: {
-        cookie(){
-          return document.cookie
-        }
-      }
-    }
+    
   }
 }
 </script>
