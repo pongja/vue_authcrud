@@ -13,9 +13,9 @@
           </li>
           <li><router-link to="/Board">게시판</router-link></li>
         </ul>
-        <ul class="display_ul2" v-if="cookie">
+        <ul class="display_ul2" v-if="state">
           <li class="padding-left2">
-            <router-link to="/Login">{{login.loginId}}</router-link>
+            <router-link to="/Login">{{ login.loginId }}</router-link>
           </li>
           <li>
             <router-link to="/Signup">로그아웃</router-link>
@@ -36,10 +36,17 @@
 
 <script>
 export default {
-  setup(){
-    
-  }
-}
+  setup() {
+    const state = reactive({
+      login: {
+          loginID : "",
+      },
+    });
+    let usertoken = localStorage.getItem("loginID");
+     return { state }
+  },
+ 
+};
 </script>
 
 <style scoped>

@@ -58,14 +58,17 @@ const formCreate = async () => {
       console.log(postdata)
       
   try {
-    await axios.post("http://127.0.0.1:8000/jobs/create-job", postdata, {
+    await axios.post("http://127.0.0.1:8000/jobs/create-job/", postdata, {
       headers: {
         'Content-Type': 'application/json' ,
          'Authorization' : token
         }, 
       withCredentials:true,
     })
-    alert('성공 ')
+    .then((res)=>{
+    console.log(res.data)
+    })
+     alert('성공')
   } catch (error) {
     console.log(error);
     alert('실패')
