@@ -13,13 +13,13 @@
         <th>내용</th>
         <th>날짜</th>
       </tr>
-      <tr>
-        <td>{{item.title}}</td>
-        <td>{{item.company}}</td>
-        <td>{{item.company_url}}</td>
-        <td>{{item.location}}</td>
-        <td>{{item.description}}</td>
-        <td>{{item.date_posted}}</td>
+      <tr v-for="params in form" :key="params">
+        <td>{{params.title}}</td>
+        <td>{{params.company}}</td>
+        <td>{{params.company_url}}</td>
+        <td>{{params.location}}</td>
+        <td>{{params.description}}</td>
+        <td>{{params.date_posted}}</td>
       </tr>
     </table>
   </div>
@@ -32,8 +32,20 @@ import { useRouter } from 'vue-router';
 
 
 
-
-axios.get("http://127.0.0.1:8000/jobs/all" )
+axios.get("http://127.0.0.1:8000/jobs/all",{
+  params: {
+        title: "",
+        company: "",
+        company_url: "",
+        location: "",
+        description: "",
+        date_posted: "",
+  }
+})
+.then((res)=>{
+  console.log(res.data)
+  return res.data
+})
 
 const router = useRouter();
 const writepage = () => {
@@ -41,6 +53,7 @@ const writepage = () => {
     name: 'BoardCreate',
   });
 };
+
 </script>
 
 <style>
