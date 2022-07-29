@@ -28,8 +28,9 @@
 <script setup>
 import axios from 'axios';
 import { useRouter } from 'vue-router';
+import { ref } from "vue";
 
-
+ const form = ref([]);
 
 
 axios.get("http://127.0.0.1:8000/jobs/all",{
@@ -44,14 +45,14 @@ axios.get("http://127.0.0.1:8000/jobs/all",{
 })
 .then((res)=>{
   console.log(res.data)
-  return res.data
+  form.value = res.data;
 })
 
 const router = useRouter();
 const writepage = () => {
   router.push({
     name: 'BoardCreate',
-  });
+  }); 
 };
 
 </script>
