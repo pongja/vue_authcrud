@@ -21,6 +21,7 @@ const routes = [
   },
   {
     path: '/Board',
+    name: 'Boardlist',
     component: ToBoard,
   },
   {

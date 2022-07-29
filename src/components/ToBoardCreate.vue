@@ -33,8 +33,10 @@
 <script setup>
 import { reactive } from "vue"
 import axios from "axios"
+import { useRouter } from 'vue-router';
 
 
+const router = useRouter();
 const state = reactive({
   form: {
   title: "",
@@ -69,6 +71,9 @@ const formCreate = async () => {
     console.log(res.data)
     })
      alert('성공')
+    router.push({
+        name:'Boardlist'
+    })
   } catch (error) {
     console.log(error);
     alert('실패')

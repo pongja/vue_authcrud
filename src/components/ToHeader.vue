@@ -15,7 +15,7 @@
         </ul>
         <ul class="display_ul2" v-if="usertoken">
           <li class="padding-left2">
-            <router-link to="/Login">{{usertoken  }}</router-link>
+            <router-link to="/Login">{{usertoken}}</router-link>
           </li>
           <li>
             <router-link to="/Signup">로그아웃</router-link>
