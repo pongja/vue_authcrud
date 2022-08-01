@@ -30,7 +30,7 @@ import axios from 'axios';
 import { useRouter } from 'vue-router';
 import { ref } from "vue";
 
- const form = ref([]);
+const form = ref([]);
 
 
 axios.get("http://127.0.0.1:8000/jobs/all",{
@@ -56,7 +56,10 @@ const writepage = () => {
 };
 const detailPage = () =>{
   router.push({
-    name: 'BoardDetail'
+    name: 'BoardDetail',
+    params: {
+      id:1
+    }
   })
 }
 </script>

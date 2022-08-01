@@ -32,7 +32,7 @@ const routes = [
     component: ToBoardCreate,
   },
   {
-    path: '/BoardDetail',
+    path: '/BoardDetail/:id',
     name: 'BoardDetail',
     component: ToBoardDetail,
     props:true

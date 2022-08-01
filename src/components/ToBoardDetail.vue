@@ -44,7 +44,7 @@ const form = ref([]);
 
 axios.get("http://127.0.0.1:8000/jobs/get/{id}",{
   params: {
-        pfotitle: null,
+        title: null,
         company: null,
         company_url: null,
         location: null,
