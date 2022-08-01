@@ -13,7 +13,7 @@
         <th>내용</th>
         <th>날짜</th>
       </tr>
-      <tr v-for="params in form" :key="params" @click="detailPage()">
+      <tr v-for="params in form" :key="params" @click="detailPage(params.id)">
         <td>{{params.title}}</td>
         <td>{{params.company}}</td>
         <td>{{params.company_url}}</td>
@@ -31,7 +31,6 @@ import { useRouter } from 'vue-router';
 import { ref } from "vue";
 
 const form = ref([]);
-
 
 axios.get("http://127.0.0.1:8000/jobs/all",{
   params: {
@@ -54,11 +53,11 @@ const writepage = () => {
     name: 'BoardCreate',
   }); 
 };
-const detailPage = () =>{
+const detailPage = id =>{
   router.push({
     name: 'BoardDetail',
-    params: {
-      id: Number
+    params:{
+      id,
     }
   })
 }

@@ -48,7 +48,7 @@ const form = ref({
         date_posted: null
 });
 
-axios.get("http://127.0.0.1:8000/jobs/get/{id}",form)
+axios.get("http://127.0.0.1:8000/jobs/get/{id}")
 .then((res)=>{
   console.log(res.data)
   form.value = res.data;
