@@ -47,11 +47,15 @@ const form = ref({
         description: null,
         date_posted: null
 });
-
+console.log(form)
 axios.get("http://127.0.0.1:8000/jobs/get/{id}")
 .then((res)=>{
   console.log(res.data)
   form.value = res.data;
+})
+.catch((error)=>{
+  console.log(error)
+  console.log(form)
 })
 </script>
 
