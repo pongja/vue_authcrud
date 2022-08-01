@@ -5,7 +5,7 @@
    <table>
         <tr>
             <td>제목</td>
-            <td><input type="text" class="input_color" id="title" name="title" v-model="params.title"></td>
+            <td><input type="text" class="input_color" id="title" name="title" v-model="form.title"></td>
         </tr>
         <tr>
             <td>회사</td>
@@ -39,7 +39,7 @@ import axios from 'axios';
 
 const form = ref([]);
 
-axios.get("http://127.0.0.1:8000/jobs/detail{id}",{
+axios.get("http://127.0.0.1:8000/jobs/get/{id}",{
   params: {
         title: "",
         company: "",
