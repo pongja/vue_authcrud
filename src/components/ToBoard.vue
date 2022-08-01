@@ -58,7 +58,7 @@ const detailPage = () =>{
   router.push({
     name: 'BoardDetail',
     params: {
-      id:1
+      id: Number
     }
   })
 }
