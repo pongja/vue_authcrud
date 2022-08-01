@@ -4,6 +4,8 @@ import ToLogin from '@/components/ToLogin.vue';
 import ToSignup from '@/components/ToSignup.vue';
 import ToBoard from '@/components/ToBoard.vue';
 import ToBoardCreate from '@/components/ToBoardCreate.vue';
+import ToBoardDetail from '@/components/ToBoardDetail.vue';
+
 const routes = [
   {
     path: '/',
@@ -28,6 +30,12 @@ const routes = [
     path: '/BoardCreate',
     name: 'BoardCreate',
     component: ToBoardCreate,
+  },
+  {
+    path: '/BoardDetail',
+    name: 'BoardDetail',
+    component: ToBoardDetail,
+    props:true
   },
 ]
 

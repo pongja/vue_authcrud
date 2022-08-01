@@ -13,7 +13,7 @@
         <th>내용</th>
         <th>날짜</th>
       </tr>
-      <tr v-for="params in form" :key="params">
+      <tr v-for="params in form" :key="params" @click="detailPage()">
         <td>{{params.title}}</td>
         <td>{{params.company}}</td>
         <td>{{params.company_url}}</td>
@@ -54,7 +54,11 @@ const writepage = () => {
     name: 'BoardCreate',
   }); 
 };
-
+const detailPage = () =>{
+  router.push({
+    name: 'BoardDetail'
+  })
+}
 </script>
 
 <style>
