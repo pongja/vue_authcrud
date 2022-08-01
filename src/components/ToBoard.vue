@@ -13,7 +13,7 @@
         <th>내용</th>
         <th>날짜</th>
       </tr>
-      <tr v-for="params in form" :key="params" @click="detailPage(params.id)">
+      <tr v-for="params in form" :key="params" @click="detailPage(params.id)" style="cursor: pointer;">
         <td>{{params.title}}</td>
         <td>{{params.company}}</td>
         <td>{{params.company_url}}</td>
