@@ -41,11 +41,11 @@ import axios from 'axios';
 
 
 const form = ref({
-        company: null,
-        company_url: null,
-        location: null,
-        description: null,
-        date_posted: null
+        company: "",
+        company_url: "",
+        location: "",
+        description: "",
+        date_posted: ""
 });
 console.log(form)
 axios.get("http://127.0.0.1:8000/jobs/get/{id}")
