@@ -5,32 +5,32 @@
        <div class="line-height">
           <div class="display_f">
             <div>제목</div>
-            <p>{{route.title}}</p>
+            <p>{{form.title}}</p>
           </div>
           <hr/>
           <div class="display_f">
             <div>회사</div>
-            <p> {{route.company}}</p>
+            <p> {{form.company}}</p>
           </div>
           <hr/>
           <div class="display_f">
             <div>회사주소</div>
-            <p> {{route.company_url}}</p>
+            <p> {{form.company_url}}</p>
           </div>
           <hr/>
           <div class="display_f">
             <div>지역</div>
-            <p>{{route.location}}</p>
+            <p>{{form.location}}</p>
           </div>
           <hr/>
           <div class="display_f">
             <div>내용</div>
-            <div class="write_widt"><p>{{route.description}}</p></div>
+            <div class="write_widt"><p>{{form.description}}</p></div>
           </div>
           <hr/>
           <div class="display_f">
             <div>날짜</div>
-            <p>{{route.date_posted}}</p>
+            <p>{{form.date_posted}}</p>
           </div>
        </div>
 </template>
@@ -38,12 +38,22 @@
 <script setup>
 import { ref } from "vue";
 import axios from 'axios';
-import { useRoute } from 'vue-router';
 
-const route = useRoute();
-const form = ref({});
+
+
+const form = ref({
+  title: null,
+  company: null,
+  company_url: null,
+  location :null,
+  description: null
+});
 console.log(form)
-axios.get("http://127.0.0.1:8000/jobs/get/{id}")
+axios.get("http://127.0.0.1:8000/jobs/get/{id}", {
+  params:{
+    id:[String,Number]
+  }
+})
 .then((res)=>{
   console.log(res.data)
   form.value = res.data;
