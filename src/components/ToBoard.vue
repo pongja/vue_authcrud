@@ -53,29 +53,17 @@ const writepage = () => {
     name: 'BoardCreate',
   }); 
 };
-const detailPage = id =>{
-  axios.get("http://127.0.0.1:8000/jobs/get/{id}",{
-    params: {
+const detailPage = (id) =>{
+  router.push({
+    name: 'BoardDetail',
+    params:{
+        id,
         title: "",
         company: "",
         company_url: "",
         location: "",
         description: "",
         date_posted: "",
-  }
-  })
-  .then((res)=>{
-  console.log(res.data)
-  form.value = res.data;
-})
-.catch((error)=>{
-  console.log(error)
-  console.log(form)
-})
-  router.push({
-    name: 'BoardDetail',
-    params:{
-      id,
     }
   })
 }

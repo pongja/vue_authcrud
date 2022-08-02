@@ -5,32 +5,32 @@
        <div class="line-height">
           <div class="display_f">
             <div>제목</div>
-            <p>{{form.title}}</p>
+            <p>{{route.title}}</p>
           </div>
           <hr/>
           <div class="display_f">
             <div>회사</div>
-            <p> {{form.company}}</p>
+            <p> {{route.company}}</p>
           </div>
           <hr/>
           <div class="display_f">
             <div>회사주소</div>
-            <p> {{form.company_url}}</p>
+            <p> {{route.company_url}}</p>
           </div>
           <hr/>
           <div class="display_f">
             <div>지역</div>
-            <p>{{form.location}}</p>
+            <p>{{route.location}}</p>
           </div>
           <hr/>
           <div class="display_f">
             <div>내용</div>
-            <div class="write_widt"><p>{{form.description}}</p></div>
+            <div class="write_widt"><p>{{route.description}}</p></div>
           </div>
           <hr/>
           <div class="display_f">
             <div>날짜</div>
-            <p>{{form.date_posted}}</p>
+            <p>{{route.date_posted}}</p>
           </div>
        </div>
 </template>
@@ -38,16 +38,10 @@
 <script setup>
 import { ref } from "vue";
 import axios from 'axios';
+import { useRoute } from 'vue-router';
 
-
-const form = ref({
-        title: "",
-        company: "",
-        company_url: "",
-        location: "",
-        description: "",
-        date_posted: ""
-});
+const route = useRoute();
+const form = ref({});
 console.log(form)
 axios.get("http://127.0.0.1:8000/jobs/get/{id}")
 .then((res)=>{
