@@ -40,20 +40,9 @@ import { ref } from "vue";
 import axios from 'axios';
 
 
-
-const form = ref({
-  title: null,
-  company: null,
-  company_url: null,
-  location :null,
-  description: null
-});
+const form = ref({});
 console.log(form)
-axios.get("http://127.0.0.1:8000/jobs/get/{id}", {
-  params:{
-    id:[String,Number]
-  }
-})
+axios.get(`http://127.0.0.1:8000/jobs/get/{id}`)
 .then((res)=>{
   console.log(res.data)
   form.value = res.data;
@@ -62,6 +51,7 @@ axios.get("http://127.0.0.1:8000/jobs/get/{id}", {
   console.log(error)
   console.log(form)
 })
+
 </script>
 
 <style>

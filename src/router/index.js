@@ -32,10 +32,12 @@ const routes = [
     component: ToBoardCreate,
   },
   {
-    path: '/BoardDetail/{id}',
+    path: '/Board/:id',
     name: 'BoardDetail',
     component: ToBoardDetail,
-    props:true
+    props: route => ({
+      id: Number(route.params.id)
+    })
   },
 ]
 
